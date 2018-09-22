@@ -54,6 +54,6 @@ public class Stats {
     public void setDefense(int defense){_defense = defense;}
 
     public Stats copy(){
-        return new Stats(_maxHP, _currentHP, _attack);
+        return new Stats(_maxHP, _currentHP, _attack, _defense);
     }
 }
