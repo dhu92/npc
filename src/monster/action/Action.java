@@ -24,11 +24,8 @@ public class Action {
     }
 
     public boolean isTriggered(Monster currentActive, List<Monster> monsters){
-        //return _trigger.isTriggered(currentActive, monsters);
-        /*
-        * Just testing
-        */
-        return true;
+        return _trigger.isTriggered(currentActive, monsters);
+        //return true;
     }
 
 
