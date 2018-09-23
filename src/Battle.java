@@ -36,6 +36,7 @@ public class Battle {
                 }
             }
             _monsters.get(turn%2).reduceStatChanges();
+            _monsters.get(turn%2).reduceAllCooldowns();
             turn++;
             for(Monster monster : _monsters){
                 System.out.println(monster.getStatsAsString());

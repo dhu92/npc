@@ -16,13 +16,7 @@ public abstract class Effect {
         _type = type;
     }
 
-    //Just testing
-    public static Effect createEffect(){
-//        return new monster.action.skill.effect.Effect();
-        return null;
-    }
-
-    //TODO: implement target selection
+    //TODO: implement better target selection
     public abstract void apply(Monster activeMonster, Monster target);
 
     public void execute(Monster activeMonster, List<Monster> possibleTargets, Trigger trigger){
