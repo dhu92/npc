@@ -17,20 +17,6 @@ public class Monster {
     private MonsterType _type;
     private int _experience;
 
-//    private int _maxHp;
-//    private int _attack;
-//    private int _currentHp;
-
-//    public Monster(int team, int hp, int attack, int defense, List<Action> actions){
-//        _actions = actions;
-//        _alive = true;
-//        _team = team;
-//        _stats = new Stats(hp, attack, defense);
-//        _statChanges = new ArrayList<>();
-//        _maxHp = hp;
-//        _attack = attack;
-//        _currentHp = _maxHp;
-//    }
 
     public Monster(){
        _actions = new ArrayList<>();
@@ -123,21 +109,6 @@ public class Monster {
     public void setTeam(int team){
         _team = team;
     }
-//    public void getHit(int dmg){
-//        _stats.setCurrentHP(_stats.getCurrentHP() - dmg);
-//        if(_stats.getCurrentHP() <= 0){
-//            _alive = false;
-//        }
-//    }
-//
-//
-//    public void heal(int heal){
-//        if(_currentHp + heal > _maxHp){
-//            _currentHp = _maxHp;
-//        } else {
-//            _currentHp += heal;
-//        }
-//    }
 
     public List<Action> getActions(){
         return _actions;
@@ -151,6 +122,9 @@ public class Monster {
         _alive = false;
     }
 
+    public void setAlive(boolean alive){
+        _alive = alive;
+    }
 
     public Action chooseAction(List<Monster> monsters) {
         for(int i = 0; i < _actions.size(); i++){

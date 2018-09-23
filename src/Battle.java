@@ -73,10 +73,16 @@ public class Battle {
         Battle attackervstank = new Battle(allTypes.get(0), allTypes.get(2));
         attackervstank.fight();
 
+        //Test3
+        resetMonster(allTypes);
+        Battle supportvstank = new Battle(allTypes.get(1), allTypes.get(2));
+        supportvstank.fight();
+
     }
 
     public static void resetMonster(List<Monster> monsters){
         for(Monster m : monsters){
+            m.setAlive(true);
             m.setCurrentHp(m.getMaxHp());
         }
     }
