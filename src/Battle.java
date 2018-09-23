@@ -1,3 +1,4 @@
+import monster.MonsterFactory;
 import monster.action.Action;
 import monster.Monster;
 
@@ -49,6 +50,9 @@ public class Battle {
       Just testing
      */
     public static void main(String[] args){
+        //Test with default
+        MonsterFactory factory = new MonsterFactory();
+        factory.createMonster();
         //too many changes, tests not working atm
 //        List<Action> m1Actions = new LinkedList<>();
 //        m1Actions.add(0, new Action(new Attack()));

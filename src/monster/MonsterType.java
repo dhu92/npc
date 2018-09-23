@@ -2,11 +2,12 @@ package monster;
 
 public enum MonsterType {
     //just random test numbers for now
-    Attack(1.2, 1.5, 1.1, 1.0, 1.0, 1.0, 1.0, 1.0),
-    Tank(1.5, 1.1, 1.3, 1.0, 1.0, 1.0, 1.0, 1.1),
-    Support(1.2, 1.1, 1.2, 1.0, 1.0, 1.1, 1.1, 1.0)
+    Attack("Attack", 1.2, 1.5, 1.1, 1.1, 1.1, 1.0, 1.0, 1.0),
+    Tank("Tank", 1.5, 1.1, 1.3, 1.0, 1.0, 1.0, 1.0, 1.1),
+    Support("Support", 1.2, 1.1, 1.1, 1.0, 1.0, 1.1, 1.1, 1.0)
     ;
 
+    private final String _name;
     private final double _hpLevelGrowth;
     private final double _attackLevelGrowth;
     private final double _defenseLevelGrowth;
@@ -16,7 +17,8 @@ public enum MonsterType {
     private final double _accuracyLevelGrowth;
     private final double _resistanceLevelGrowth;
 
-    MonsterType(double hpLevelGrowth, double attackLevelGrowth, double defenseLevelGrowth, double critRateLevelGrowth, double critDamageLevelGrowth, double speedLevelGrowth, double accuracyLevelGrowth, double resistanceLevelGrowth) {
+    MonsterType(String name, double hpLevelGrowth, double attackLevelGrowth, double defenseLevelGrowth, double critRateLevelGrowth, double critDamageLevelGrowth, double speedLevelGrowth, double accuracyLevelGrowth, double resistanceLevelGrowth) {
+        _name = name;
         _hpLevelGrowth = hpLevelGrowth;
         _attackLevelGrowth = attackLevelGrowth;
         _defenseLevelGrowth = defenseLevelGrowth;
@@ -25,6 +27,10 @@ public enum MonsterType {
         _speedLevelGrowth = speedLevelGrowth;
         _accuracyLevelGrowth = accuracyLevelGrowth;
         _resistanceLevelGrowth = resistanceLevelGrowth;
+    }
+
+    public String getName(){
+        return _name;
     }
 
     public double getHpLevelGrowth(){
