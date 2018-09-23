@@ -11,14 +11,17 @@ public class Action {
     private Skill _skill;
     private Trigger _trigger;
     private int _cooldown;
+    private int _currentCooldown;
 
     public Action(){
 
     }
 
-    public Action(Skill skill, Trigger trigger){
+    public Action(Skill skill, Trigger trigger, int cooldown){
         _skill = skill;
         _trigger = trigger;
+        _cooldown = cooldown;
+        _currentCooldown = 0;
     }
 
     public Action(Skill skill){
@@ -26,23 +29,25 @@ public class Action {
     }
 
     public boolean isTriggered(Monster currentActive, List<Monster> monsters){
-        return _trigger.isTriggered(currentActive, monsters);
+        return _trigger.isTriggered(currentActive, monsters, _currentCooldown);
         //return true;
     }
 
     public void execute(Monster currentActive, List<Monster> monsters){
         _skill.execute(currentActive, monsters, _trigger);
+        _currentCooldown = _cooldown;
     }
 
     public int getCooldown(){
         return _cooldown;
     }
+    public int getCurrentCooldown() { return _currentCooldown;}
 
     public void reduceCooldown(){
-        if(_cooldown-1 < 0){
-            _cooldown = 0;
+        if(_currentCooldown-1 < 0){
+            _currentCooldown = 0;
         } else {
-            _cooldown--;
+            _currentCooldown--;
         }
     }
 

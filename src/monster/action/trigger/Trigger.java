@@ -14,12 +14,14 @@ public abstract class Trigger {
         _targetType = target;
     }
 
-    public boolean isTriggered(Monster currentActive, List<Monster> monsters) {
-        List<Monster> targets = filterTargets(currentActive, monsters);
+    public boolean isTriggered(Monster currentActive, List<Monster> monsters, int cooldown) {
         boolean triggered = false;
-        for(Monster m : targets){
-            if(matchesTriggerConditions(m)){
-                triggered = true;
+        if(cooldown <= 0) {
+            List<Monster> targets = filterTargets(currentActive, monsters);
+            for (Monster m : targets) {
+                if (matchesTriggerConditions(m)) {
+                    triggered = true;
+                }
             }
         }
         return triggered;

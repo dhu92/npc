@@ -39,7 +39,7 @@ public class MonsterFactory {
         Skill skill = new Skill("Auto Attack");
         skill.addEffect(effect);
 
-        Action autoAttack = new Action(skill, trigger);
+        Action autoAttack = new Action(skill, trigger, 0);
 
         monster.addAction(autoAttack, 0);
 
@@ -64,7 +64,7 @@ public class MonsterFactory {
         skill = new Skill("Auto Attack");
         skill.addEffect(effect);
 
-        autoAttack = new Action(skill, trigger);
+        autoAttack = new Action(skill, trigger, 0);
 
 
         Effect buffEffect = new StatChange(2);
@@ -73,7 +73,7 @@ public class MonsterFactory {
         Skill atkBuff = new Skill("Attack Buff");
         atkBuff.addEffect(buffEffect);
 
-        monster.addAction(new Action(atkBuff, buffTrigger), 0);
+        monster.addAction(new Action(atkBuff, buffTrigger, 2), 0);
         monster.addAction(autoAttack, 1);
 
         System.out.println(monster.getStatsAsString());
@@ -97,7 +97,7 @@ public class MonsterFactory {
         skill = new Skill("Auto Attack");
         skill.addEffect(effect);
 
-        autoAttack = new Action(skill, trigger);
+        autoAttack = new Action(skill, trigger, 0);
 
         Trigger healTrigger = new StatTrigger(TargetType.Self, 0, 70, 0, 100, 0, 100);
         Effect healEffect = new HealEffect(20);
@@ -105,7 +105,7 @@ public class MonsterFactory {
         Skill healSkill = new Skill("SelfHeal");
         healSkill.addEffect(healEffect);
 
-        Action heal = new Action(healSkill, healTrigger);
+        Action heal = new Action(healSkill, healTrigger, 2);
 
         monster.addAction(heal, 0);
 
