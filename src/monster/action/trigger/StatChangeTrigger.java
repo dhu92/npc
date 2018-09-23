@@ -1,6 +1,7 @@
 package monster.action.trigger;
 
 import monster.Monster;
+import monster.action.TargetType;
 import monster.action.skill.effect.StatChange;
 
 import java.util.List;

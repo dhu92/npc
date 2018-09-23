@@ -1,6 +1,7 @@
 package monster.action.trigger;
 
 import monster.Monster;
+import monster.action.TargetType;
 
 public class StatTrigger extends Trigger{
 

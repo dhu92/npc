@@ -2,6 +2,7 @@ package monster.action.skill.effect;
 
 import monster.Monster;
 import monster.Stats;
+import monster.action.trigger.Trigger;
 
 import java.util.List;
 import java.util.Random;
@@ -29,7 +30,6 @@ public class StatChange extends Effect{
 //        _duration= duration;
 //        _name = name;
 //        _turnCount = 0;
-
 
 //        _defenseMultiplier = 1.0;
 //        _maxHPMultiplier = 1.0;
@@ -78,14 +78,27 @@ public class StatChange extends Effect{
 
 
     @Override
-    public void apply(Monster activeMonster, List<Monster> possibleTargets) {
-        Random rand = new Random();
-        for(Monster target : possibleTargets){
+    public void apply(Monster activeMonster, Monster target) {
+        if(activeMonster.getTeam() == target.getTeam()){
+            target.addStatChange(this);
+        } else {
+            Random rand = new Random();
             int rng = rand.nextInt(activeMonster.getAccuracy() + target.getResistance());
-            if(rng > activeMonster.getAccuracy()){
+            if (rng > activeMonster.getAccuracy()) {
                 target.addStatChange(this);
             }
         }
+    }
+
+    @Override
+    public Monster findBestMatch(Monster activeMonster, List<Monster> monsters) {
+        Monster currentBestMatch = monsters.get(0);
+        for(Monster monster : monsters) {
+            if(!monster.getStatChanges().contains(this)){
+                currentBestMatch = monster;
+            }
+        }
+        return currentBestMatch;
     }
 
     public boolean equals(StatChange statChange){

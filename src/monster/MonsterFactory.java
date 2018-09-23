@@ -1,6 +1,5 @@
 package monster;
 
-import jdk.nashorn.internal.parser.JSONParser;
 import monster.action.Action;
 import monster.action.skill.Skill;
 import monster.action.skill.effect.AttackEffect;
@@ -9,7 +8,7 @@ import monster.action.skill.effect.HealEffect;
 import monster.action.skill.effect.StatChange;
 import monster.action.trigger.StatChangeTrigger;
 import monster.action.trigger.StatTrigger;
-import monster.action.trigger.TargetType;
+import monster.action.TargetType;
 import monster.action.trigger.Trigger;
 
 

@@ -30,7 +30,7 @@ public class Action {
     }
 
     public void execute(Monster currentActive, List<Monster> monsters){
-        _skill.execute(currentActive, monsters);
+        _skill.execute(currentActive, monsters, _trigger);
     }
 
     public void printAction(){
@@ -38,5 +38,5 @@ public class Action {
     }
     public String getSkillName(){
         return _skill.getName();
-    };
+    }
 }

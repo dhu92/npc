@@ -2,7 +2,10 @@ package monster.action.skill.effect;
 
 import monster.Monster;
 import monster.Stats;
+import monster.action.TargetType;
+import monster.action.trigger.Trigger;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -21,17 +24,27 @@ public class AttackEffect extends Effect {
     }
 
     @Override
-    public void apply(Monster activeMonster, List<Monster> possibleTargets) {
-        for(Monster target : possibleTargets){
-            //Just for testing attack every enemy
-            if(target.getTeam() != activeMonster.getTeam()) {
-                target.setCurrentHp(target.getCurrentHp() - calculateDamage(activeMonster, target));
-                if (target.getCurrentHp() <= 0) {
-                    target.die();
-                }
-            }
+    public void apply(Monster activeMonster, Monster target) {
+        target.setCurrentHp(target.getCurrentHp() - calculateDamage(activeMonster, target));
+        if (target.getCurrentHp() <= 0) {
+            target.die();
         }
     }
+
+    //For now, highest damage is best match
+    @Override
+    public Monster findBestMatch(Monster activeMonster, List<Monster> monsters) {
+        Monster currentBestMatch = monsters.get(0);
+        int highestDamage = 0;
+        for(Monster monster : monsters){
+            if(calculateDamage(activeMonster, monster) > highestDamage){
+                highestDamage = calculateDamage(activeMonster, monster);
+                currentBestMatch = monster;
+            }
+        }
+        return currentBestMatch;
+    }
+
 
     public int calculateDamage(Monster attacker, Monster defender){
         Stats attackerStats = attacker.getChangedStats();

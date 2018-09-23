@@ -2,6 +2,7 @@ package monster.action.skill;
 
 import monster.Monster;
 import monster.action.skill.effect.Effect;
+import monster.action.trigger.Trigger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,9 @@ public class Skill {
         _skillEffects = new ArrayList<>();
     }
 
-    public void execute(Monster currentActive, List<Monster> monsters){
+    public void execute(Monster currentActive, List<Monster> monsters, Trigger trigger){
         for(Effect effect : _skillEffects){
-            //TODO: target selection
-            effect.apply(currentActive, monsters);
+            effect.execute(currentActive, monsters, trigger);
         }
     }
 

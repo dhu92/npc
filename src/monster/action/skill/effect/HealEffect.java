@@ -1,6 +1,7 @@
 package monster.action.skill.effect;
 
 import monster.Monster;
+import monster.action.trigger.Trigger;
 
 import java.util.List;
 
@@ -14,23 +15,32 @@ public class HealEffect extends Effect{
     }
 
     @Override
-    public void apply(Monster activeMonster, List<Monster> possibleTargets) {
+    public void apply(Monster activeMonster, Monster target) {
         /*
         * Just testing
         */
         int healValue = 0;
-        for(Monster target : possibleTargets){
-            //Just for testing
-            if(target.getTeam() == activeMonster.getTeam()) {
-                healValue = calculateHealingValue(activeMonster, target);
-                if (target.getCurrentHp() + healValue > target.getMaxHp()) {
-                    target.setCurrentHp(target.getMaxHp());
-                } else {
-                    target.setCurrentHp(target.getCurrentHp() + healValue);
-                }
-            }
+        healValue = calculateHealingValue(activeMonster, target);
+        if (target.getCurrentHp() + healValue > target.getMaxHp()) {
+            target.setCurrentHp(target.getMaxHp());
+        } else {
+            target.setCurrentHp(target.getCurrentHp() + healValue);
         }
     }
+
+    @Override
+    public Monster findBestMatch(Monster activeMonster, List<Monster> monsters) {
+        Monster currentBestMatch = monsters.get(0);
+        double highestPercentage = 0.0;
+        for(Monster monster : monsters){
+            if(calculateHealingValue(activeMonster, monster) > highestPercentage){
+                highestPercentage = calculateHealingValue(activeMonster, monster);
+                currentBestMatch = monster;
+            }
+        }
+        return currentBestMatch;
+    }
+
 
     private int calculateHealingValue(Monster healer, Monster target){
         //idk right now
