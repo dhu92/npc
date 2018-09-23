@@ -11,6 +11,9 @@ import monster.action.trigger.StatTrigger;
 import monster.action.TargetType;
 import monster.action.trigger.Trigger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MonsterFactory {
 
@@ -18,7 +21,7 @@ public class MonsterFactory {
         return null;
     }
 
-    public Monster createTestMonster(){
+    public List<Monster> createTestMonster(){
         //just test data for now
         Monster attackMonster = new Monster();
         attackMonster.setName("TestAttackMonster");
@@ -113,7 +116,11 @@ public class MonsterFactory {
         System.out.println(tankMonster.getStatsAsString());
 
         test(attackMonster, supportMonster, tankMonster);
-        return attackMonster;
+        List<Monster> monsters = new ArrayList<>();
+        monsters.add(attackMonster);
+        monsters.add(supportMonster);
+        monsters.add(tankMonster);
+        return monsters;
     }
 
     public void test(Monster attackMonster, Monster supportMonster, Monster tankMonster){

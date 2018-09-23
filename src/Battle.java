@@ -8,7 +8,7 @@ import java.util.List;
 public class Battle {
 
     private List<Monster> _monsters;
-    private int _maxTurns = 100;
+    private int _maxTurns = 10;
 
     /*
     * Just testing
@@ -28,7 +28,7 @@ public class Battle {
         while(!winner && turn < _maxTurns){
             action = _monsters.get(turn%2).chooseAction(_monsters);
             action.execute(_monsters.get(turn%2), _monsters);
-            System.out.print("monster.Monster " + ((turn%2)+1) + " used ");
+            System.out.print("Monster " + ((turn%2)+1) + " used ");
             action.printAction();
             for(Monster monster : _monsters){
                 if(!monster.isAlive()){
@@ -55,7 +55,11 @@ public class Battle {
     public static void main(String[] args){
         //Test with default
         MonsterFactory factory = new MonsterFactory();
-        factory.createTestMonster();
+        List<Monster> allTypes = factory.createTestMonster();
+
+        //Test 1:
+        Battle attackervssupport = new Battle(allTypes.get(0), allTypes.get(1));
+        attackervssupport.fight();
         //too many changes, tests not working atm
 //        List<Action> m1Actions = new LinkedList<>();
 //        m1Actions.add(0, new Action(new Attack()));

@@ -152,7 +152,7 @@ public class Monster {
     }
 
 
-    public Action chooseAction(List monsters) {
+    public Action chooseAction(List<Monster> monsters) {
         for(int i = 0; i < _actions.size(); i++){
             if(_actions.get(i).isTriggered(this, monsters)){
                     return _actions.get(i);
