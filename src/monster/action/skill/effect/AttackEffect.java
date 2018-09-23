@@ -56,17 +56,12 @@ public class AttackEffect extends Effect {
         Random rand = new Random();
         int rng = rand.nextInt(100)+1;
         int dmg = attackerStats.getAttack();
-        System.out.println("Attacker damage: " + attackerStats.getAttack());
-        System.out.println("Defender defense: " + defenderStats.getDefense());
+
         if(rng <= attackerStats.getCritRate()){
             dmg += attackerStats.getAttack() * (attackerStats.getCritDamage()/100.0);
-            System.out.println("Damage with crit: " + dmg);
         }
-        System.out.println((double)dmg / (dmg + defenderStats.getDefense()));
-        System.out.println(_multiplier);
-        System.out.println(_multiplier * dmg);
-        System.out.println(_multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense())));
-        return _multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense()));
+//        return _multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense()));
+        return (2 * dmg - defenderStats.getDefense()) * 0.5;
     }
 
 }
