@@ -10,7 +10,6 @@ public class StatChange extends Effect{
 
     private int _duration;
     private int _turnCount;
-    private String _name;
 
     private double _maxHPMultiplier;
     private double _currentHPMultiplier;
@@ -22,11 +21,11 @@ public class StatChange extends Effect{
     private double _resistanceMultiplier;
     private double _speedMultiplier;
 
-    public StatChange(String name, int duration){
+    public StatChange(int duration){
 //        super(EffectType.StatChange);
 
         //default attack buff for testing
-        this(name, duration, 1.0, 1.0, 1.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        this(duration, 1.0, 1.0, 1.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
 //        _duration= duration;
 //        _name = name;
 //        _turnCount = 0;
@@ -38,9 +37,8 @@ public class StatChange extends Effect{
 //        _attackMultiplier = 1.5;
     }
 
-    public StatChange(String name, int duration, double maxHPMultiplier, double currentHPMultiplier, double attackMultiplier, double defenseMultiplier, double critRateMultiplier, double critDamageMultiplier, double accuracyMultiplier, double resistanceMultiplier, double speedMultiplier){
+    public StatChange(int duration, double maxHPMultiplier, double currentHPMultiplier, double attackMultiplier, double defenseMultiplier, double critRateMultiplier, double critDamageMultiplier, double accuracyMultiplier, double resistanceMultiplier, double speedMultiplier){
         super(EffectType.StatChange);
-        _name = name;
         _duration = duration;
         _turnCount = 0;
         _maxHPMultiplier = maxHPMultiplier;
@@ -64,10 +62,6 @@ public class StatChange extends Effect{
 
     public int getTurnCount(){
         return _turnCount;
-    }
-
-    public String getName(){
-        return _name;
     }
 
     public void applyChange(Stats monsterStats){
@@ -95,7 +89,7 @@ public class StatChange extends Effect{
     }
 
     public boolean equals(StatChange statChange){
-        if(_name.equals(statChange._name) && _duration == statChange._duration && _maxHPMultiplier == statChange._maxHPMultiplier && _currentHPMultiplier == statChange._currentHPMultiplier
+        if(_duration == statChange._duration && _maxHPMultiplier == statChange._maxHPMultiplier && _currentHPMultiplier == statChange._currentHPMultiplier
                 && _attackMultiplier == statChange._attackMultiplier && _defenseMultiplier == statChange._defenseMultiplier && _critRateMultiplier == statChange._critRateMultiplier
                 && _critDamageMultiplier == statChange._critDamageMultiplier
                 && _accuracyMultiplier == statChange._accuracyMultiplier && _resistanceMultiplier == statChange._resistanceMultiplier && _speedMultiplier == statChange._speedMultiplier){

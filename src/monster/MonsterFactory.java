@@ -1,5 +1,6 @@
 package monster;
 
+import jdk.nashorn.internal.parser.JSONParser;
 import monster.action.Action;
 import monster.action.skill.Skill;
 import monster.action.skill.effect.AttackEffect;
@@ -11,9 +12,14 @@ import monster.action.trigger.StatTrigger;
 import monster.action.trigger.TargetType;
 import monster.action.trigger.Trigger;
 
+
 public class MonsterFactory {
 
-    public Monster createMonster(){
+    public Monster createMonsterFromJson(){
+        return null;
+    }
+
+    public Monster createTestMonster(){
         //just test data for now
         Monster monster = new Monster();
         monster.setName("TestAttackMonster");
@@ -24,6 +30,9 @@ public class MonsterFactory {
         monster.setStats(stats);
 
         monster.gainExperience(1000);
+
+        //just for now
+        monster.setCurrentHp(monster.getMaxHp());
 
         Trigger trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
         Effect effect = new AttackEffect(1.0);
@@ -47,6 +56,9 @@ public class MonsterFactory {
 
         monster.gainExperience(1000);
 
+        //Just for now
+        monster.setCurrentHp(monster.getMaxHp());
+
         trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
         effect = new AttackEffect(1.0);
 
@@ -56,7 +68,7 @@ public class MonsterFactory {
         autoAttack = new Action(skill, trigger);
 
 
-        Effect buffEffect = new StatChange("TestAttackbuff", 2);
+        Effect buffEffect = new StatChange(2);
         Trigger buffTrigger = new StatChangeTrigger(TargetType.Team, (StatChange) buffEffect);
 
         Skill atkBuff = new Skill("Attack Buff");
@@ -76,6 +88,9 @@ public class MonsterFactory {
         monster.setStats(stats);
 
         monster.gainExperience(1000);
+
+        //Just for now
+        monster.setCurrentHp(monster.getMaxHp());
 
         trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
         effect = new AttackEffect(1.0);

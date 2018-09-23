@@ -16,7 +16,9 @@ public class Battle {
     public Battle(Monster monsterOne, Monster monsterTwo){
         _monsters = new ArrayList<>();
         _monsters.add(monsterOne);
+        monsterOne.setTeam(1);
         _monsters.add(monsterTwo);
+        monsterTwo.setTeam(2);
     }
 
     public void fight(){
@@ -52,7 +54,7 @@ public class Battle {
     public static void main(String[] args){
         //Test with default
         MonsterFactory factory = new MonsterFactory();
-        factory.createMonster();
+        factory.createTestMonster();
         //too many changes, tests not working atm
 //        List<Action> m1Actions = new LinkedList<>();
 //        m1Actions.add(0, new Action(new Attack()));
