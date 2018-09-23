@@ -1,7 +1,6 @@
 package monster;
 
 import monster.action.Action;
-import monster.action.skill.Skill;
 import monster.action.skill.effect.StatChange;
 
 import java.util.ArrayList;
@@ -168,7 +167,7 @@ public class Monster {
         }
     }
 
-    public void setCurrentHp(int value){
+    public void setCurrentHp(double value){
         _stats.setCurrentHP(value);
     }
 
@@ -189,39 +188,39 @@ public class Monster {
         return _team;
     }
 
-    public int getAttack() {
+    public double getAttack() {
         return _stats.getAttack();
     }
 
-    public int getCurrentHp() {
+    public double getCurrentHp() {
         return _stats.getCurrentHP();
     }
 
-    public int getMaxHp() {
+    public double getMaxHp() {
         return _stats.getCurrentHP();
     }
 
-    public int getDefense() {
+    public double getDefense() {
         return _stats.getDefense();
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return _stats.getSpeed();
     }
 
-    public int getAccuracy(){
+    public double getAccuracy(){
         return _stats.getAccuracy();
     }
 
-    public int getResistance(){
+    public double getResistance(){
         return _stats.getResistance();
     }
 
-    public int getCritRate(){
+    public double getCritRate(){
         return _stats.getCritRate();
     }
 
-    public int getCritDamage(){
+    public double getCritDamage(){
         return _stats.getCritDamage();
     }
 

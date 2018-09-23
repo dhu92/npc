@@ -2,15 +2,15 @@ package monster;
 
 public class Stats {
 
-    private int _maxHP;
-    private int _currentHP;
-    private int _attack;
-    private int _critRate;
-    private int _critDamage;
-    private int _defense;
-    private int _speed;
-    private int _accuracy;
-    private int _resistance;
+    private double _maxHP;
+    private double _currentHP;
+    private double _attack;
+    private double _critRate;
+    private double _critDamage;
+    private double _defense;
+    private double _speed;
+    private double _accuracy;
+    private double _resistance;
 
     public Stats(){
 
@@ -30,7 +30,7 @@ public class Stats {
 //        _defense = defense;
 //    }
 
-    public Stats(int maxHP, int currentHP, int attack, int critRate, int critDamage, int defense, int speed, int accuracy, int resistance) {
+    public Stats(double maxHP, double currentHP, double attack, double critRate, double critDamage, double defense, double speed, double accuracy, double resistance) {
         _maxHP = maxHP;
         _currentHP = currentHP;
         _attack = attack;
@@ -58,15 +58,15 @@ public class Stats {
         _maxHP = hp;
     }
 
-    public int getMaxHP(){
+    public double getMaxHP(){
         return _maxHP;
     }
 
-    public void setCurrentHP(int hp){
+    public void setCurrentHP(double hp){
         _currentHP = hp;
     }
 
-    public int getCurrentHP(){
+    public double getCurrentHP(){
         return _currentHP;
     }
 
@@ -74,11 +74,11 @@ public class Stats {
         _attack = attack;
     }
 
-    public int getAttack(){
+    public double getAttack(){
         return _attack;
     }
 
-    public int getDefense(){return _defense;}
+    public double getDefense(){return _defense;}
 
     public void setDefense(int defense){_defense = defense;}
 
@@ -90,7 +90,7 @@ public class Stats {
         }
     }
 
-    public int getCritRate(){
+    public double getCritRate(){
         return _critRate;
     }
 
@@ -99,7 +99,7 @@ public class Stats {
         _critDamage = critDamage;
     }
 
-    public int getCritDamage(){
+    public double getCritDamage(){
         return _critDamage;
     }
 
@@ -107,7 +107,7 @@ public class Stats {
         _speed = speed;
     }
 
-    public int getSpeed(){
+    public double getSpeed(){
         return _speed;
     }
 
@@ -119,7 +119,7 @@ public class Stats {
         }
     }
 
-    public int getAccuracy(){
+    public double getAccuracy(){
         return _accuracy;
     }
 
@@ -131,7 +131,7 @@ public class Stats {
         }
     }
 
-    public int getResistance(){
+    public double getResistance(){
         return _resistance;
     }
     public Stats copy(){

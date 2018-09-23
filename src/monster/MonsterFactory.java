@@ -11,9 +11,6 @@ import monster.action.trigger.StatTrigger;
 import monster.action.TargetType;
 import monster.action.trigger.Trigger;
 
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class MonsterFactory {
 
@@ -121,8 +118,16 @@ public class MonsterFactory {
 
     public void test(Monster attackMonster, Monster supportMonster, Monster tankMonster){
         AttackEffect attackEffect = new AttackEffect(1.0);
-        for(int i = 0; i < 3; i++) {
-            System.out.println("Attacker vs. Tank damage " + i + ": " +attackEffect.calculateDamage(attackMonster, tankMonster));
-        }
+            System.out.println("Attacker vs. Tank damage: " +attackEffect.calculateDamage(attackMonster, tankMonster));
+            System.out.println("Attacker vs. Support damage: " +attackEffect.calculateDamage(attackMonster, supportMonster));
+            System.out.println("Tank vs. Support damage: " + attackEffect.calculateDamage(tankMonster, supportMonster));
+            System.out.println("Tank vs. Attacker damage: " + attackEffect.calculateDamage(tankMonster, attackMonster));
+            System.out.println("Support vs. Tank damage: " + attackEffect.calculateDamage(supportMonster, tankMonster));
+            System.out.println("Support vs. Attacker damage: " + attackEffect.calculateDamage(supportMonster, attackMonster));
+
+    }
+
+    public void healMonster(Monster monster){
+        monster.setCurrentHp(monster.getMaxHp());
     }
 }

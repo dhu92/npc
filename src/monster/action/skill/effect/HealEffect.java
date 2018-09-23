@@ -1,7 +1,6 @@
 package monster.action.skill.effect;
 
 import monster.Monster;
-import monster.action.trigger.Trigger;
 
 import java.util.List;
 

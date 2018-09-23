@@ -2,10 +2,7 @@ package monster.action.skill.effect;
 
 import monster.Monster;
 import monster.Stats;
-import monster.action.TargetType;
-import monster.action.trigger.Trigger;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -55,13 +52,12 @@ public class AttackEffect extends Effect {
         // realDamage = SkillDmg * BaseDamage * BaseDamage / (BaseDamage + Defense)
         Random rand = new Random();
         int rng = rand.nextInt(100)+1;
-        int dmg = attackerStats.getAttack();
+        double dmg = attackerStats.getAttack();
 
         if(rng <= attackerStats.getCritRate()){
             dmg += attackerStats.getAttack() * (attackerStats.getCritDamage()/100.0);
         }
-//        return _multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense()));
-        return (2 * dmg - defenderStats.getDefense()) * 0.5;
+        return (_multiplier * dmg * (dmg / (dmg + defenderStats.getDefense())));
     }
 
 }

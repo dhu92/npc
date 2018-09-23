@@ -2,7 +2,6 @@ package monster.action.skill.effect;
 
 import monster.Monster;
 import monster.Stats;
-import monster.action.trigger.Trigger;
 
 import java.util.List;
 import java.util.Random;
@@ -83,7 +82,7 @@ public class StatChange extends Effect{
             target.addStatChange(this);
         } else {
             Random rand = new Random();
-            int rng = rand.nextInt(activeMonster.getAccuracy() + target.getResistance());
+            int rng = rand.nextInt((int) activeMonster.getAccuracy() + (int) target.getResistance());
             if (rng > activeMonster.getAccuracy()) {
                 target.addStatChange(this);
             }
