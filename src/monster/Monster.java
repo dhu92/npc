@@ -1,6 +1,7 @@
 package monster;
 
 import monster.action.Action;
+import monster.action.skill.Skill;
 import monster.action.skill.effect.StatChange;
 
 import java.util.ArrayList;
@@ -166,8 +167,12 @@ public class Monster {
     }
 
     public String getStatsAsString(){
+        String skillList = "\n";
+        for(Action a : _actions){
+            skillList += "+" + a.getSkillName() +"\n";
+        }
         return "Name: " + _name + "\nLevel: " + calculateMonsterLevel() + "\nMonster Type: " + _type.getName() + "\nHP: " + _stats.getCurrentHP() + "/" + _stats.getMaxHP() + "\nAttack: " + _stats.getAttack() + "\nCritical Rate: " + _stats.getCritRate() + "\nCritical Damage: " + _stats.getCritDamage()
-                + "\nDefense: " + _stats.getDefense() + "\nSpeed: " + _stats.getSpeed() + "\nAccuracy: " + _stats.getAccuracy() + "\nResistance: " + _stats.getResistance();
+                + "\nDefense: " + _stats.getDefense() + "\nSpeed: " + _stats.getSpeed() + "\nAccuracy: " + _stats.getAccuracy() + "\nResistance: " + _stats.getResistance() + "\nSkills: " + skillList;
     }
 
     public String getName(){return _name;}

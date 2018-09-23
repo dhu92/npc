@@ -36,5 +36,7 @@ public class Action {
     public void printAction(){
         System.out.println(_skill.getName());
     }
-
+    public String getSkillName(){
+        return _skill.getName();
+    };
 }

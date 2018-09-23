@@ -93,4 +93,14 @@ public class StatChange extends Effect{
             }
         }
     }
+
+    public boolean equals(StatChange statChange){
+        if(_name.equals(statChange._name) && _duration == statChange._duration && _maxHPMultiplier == statChange._maxHPMultiplier && _currentHPMultiplier == statChange._currentHPMultiplier
+                && _attackMultiplier == statChange._attackMultiplier && _defenseMultiplier == statChange._defenseMultiplier && _critRateMultiplier == statChange._critRateMultiplier
+                && _critDamageMultiplier == statChange._critDamageMultiplier
+                && _accuracyMultiplier == statChange._accuracyMultiplier && _resistanceMultiplier == statChange._resistanceMultiplier && _speedMultiplier == statChange._speedMultiplier){
+            return true;
+        }
+        return false;
+    }
 }

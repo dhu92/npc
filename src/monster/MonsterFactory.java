@@ -4,6 +4,9 @@ import monster.action.Action;
 import monster.action.skill.Skill;
 import monster.action.skill.effect.AttackEffect;
 import monster.action.skill.effect.Effect;
+import monster.action.skill.effect.HealEffect;
+import monster.action.skill.effect.StatChange;
+import monster.action.trigger.StatChangeTrigger;
 import monster.action.trigger.StatTrigger;
 import monster.action.trigger.TargetType;
 import monster.action.trigger.Trigger;
@@ -52,7 +55,15 @@ public class MonsterFactory {
 
         autoAttack = new Action(skill, trigger);
 
-        monster.addAction(autoAttack, 0);
+
+        Effect buffEffect = new StatChange("TestAttackbuff", 2);
+        Trigger buffTrigger = new StatChangeTrigger(TargetType.Team, (StatChange) buffEffect);
+
+        Skill atkBuff = new Skill("Attack Buff");
+        atkBuff.addEffect(buffEffect);
+
+        monster.addAction(new Action(atkBuff, buffTrigger), 0);
+        monster.addAction(autoAttack, 1);
 
         System.out.println(monster.getStatsAsString());
 
@@ -74,7 +85,17 @@ public class MonsterFactory {
 
         autoAttack = new Action(skill, trigger);
 
-        monster.addAction(autoAttack, 0);
+        Trigger healTrigger = new StatTrigger(TargetType.Self, 0, 70, 0, 100, 0, 100);
+        Effect healEffect = new HealEffect(20);
+
+        Skill healSkill = new Skill("SelfHeal");
+        healSkill.addEffect(healEffect);
+
+        Action heal = new Action(healSkill, healTrigger);
+
+        monster.addAction(heal, 0);
+
+        monster.addAction(autoAttack, 1);
 
         System.out.println(monster.getStatsAsString());
 

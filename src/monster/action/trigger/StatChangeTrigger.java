@@ -17,6 +17,12 @@ public class StatChangeTrigger extends Trigger {
     @Override
     public boolean matchesTriggerConditions(Monster monster) {
         List<StatChange> statChanges = monster.getStatChanges();
-        return statChanges.contains(_triggerStatChange);
+//        return !statChanges.contains(_triggerStatChange);
+        for(StatChange sc : statChanges){
+            if(sc.equals(_triggerStatChange)){
+                return true;
+            }
+        }
+        return false;
     }
 }
