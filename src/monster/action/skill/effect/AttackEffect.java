@@ -25,7 +25,7 @@ public class AttackEffect extends Effect {
 
     @Override
     public void apply(Monster activeMonster, Monster target) {
-        target.setCurrentHp(target.getCurrentHp() - calculateDamage(activeMonster, target));
+        target.setCurrentHp((int) (target.getCurrentHp() - calculateDamage(activeMonster, target)));
         if (target.getCurrentHp() <= 0) {
             target.die();
         }
@@ -38,7 +38,7 @@ public class AttackEffect extends Effect {
         int highestDamage = 0;
         for(Monster monster : monsters){
             if(calculateDamage(activeMonster, monster) > highestDamage){
-                highestDamage = calculateDamage(activeMonster, monster);
+                highestDamage = (int) calculateDamage(activeMonster, monster);
                 currentBestMatch = monster;
             }
         }
@@ -46,7 +46,7 @@ public class AttackEffect extends Effect {
     }
 
 
-    public int calculateDamage(Monster attacker, Monster defender){
+    public double calculateDamage(Monster attacker, Monster defender){
         Stats attackerStats = attacker.getChangedStats();
         Stats defenderStats = defender.getChangedStats();
 
@@ -56,10 +56,17 @@ public class AttackEffect extends Effect {
         Random rand = new Random();
         int rng = rand.nextInt(100)+1;
         int dmg = attackerStats.getAttack();
+        System.out.println("Attacker damage: " + attackerStats.getAttack());
+        System.out.println("Defender defense: " + defenderStats.getDefense());
         if(rng <= attackerStats.getCritRate()){
-            dmg += attackerStats.getAttack() * (double)(attackerStats.getCritDamage()/100.0);
+            dmg += attackerStats.getAttack() * (attackerStats.getCritDamage()/100.0);
+            System.out.println("Damage with crit: " + dmg);
         }
-        return (int) (_multiplier * dmg * (dmg / (dmg * defenderStats.getDefense())));
+        System.out.println((double)dmg / (dmg + defenderStats.getDefense()));
+        System.out.println(_multiplier);
+        System.out.println(_multiplier * dmg);
+        System.out.println(_multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense())));
+        return _multiplier * dmg * (double)(dmg / (dmg + defenderStats.getDefense()));
     }
 
 }

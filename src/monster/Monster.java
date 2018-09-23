@@ -175,7 +175,7 @@ public class Monster {
     public String getStatsAsString(){
         String skillList = "\n";
         for(Action a : _actions){
-            skillList += "+" + a.getSkillName() +"\n";
+            skillList += "+" + a.getSkillName() +" " + a.getCurrentCooldown() + "/" + a.getCooldown() + "\n";
         }
         return "Name: " + _name + "\nLevel: " + calculateMonsterLevel() + "\nMonster Type: " + _type.getName() + "\nHP: " + _stats.getCurrentHP() + "/" + _stats.getMaxHP() + "\nAttack: " + _stats.getAttack() + "\nCritical Rate: " + _stats.getCritRate() + "\nCritical Damage: " + _stats.getCritDamage()
                 + "\nDefense: " + _stats.getDefense() + "\nSpeed: " + _stats.getSpeed() + "\nAccuracy: " + _stats.getAccuracy() + "\nResistance: " + _stats.getResistance() + "\nSkills: " + skillList;

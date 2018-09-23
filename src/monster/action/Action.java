@@ -51,6 +51,7 @@ public class Action {
         }
     }
 
+    public Skill getSkill(){return _skill;}
     public void printAction(){
         System.out.println(_skill.getName());
     }

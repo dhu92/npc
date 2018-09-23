@@ -11,6 +11,9 @@ import monster.action.trigger.StatTrigger;
 import monster.action.TargetType;
 import monster.action.trigger.Trigger;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MonsterFactory {
 
@@ -20,18 +23,18 @@ public class MonsterFactory {
 
     public Monster createTestMonster(){
         //just test data for now
-        Monster monster = new Monster();
-        monster.setName("TestAttackMonster");
-        monster.setTeam(1);
-        monster.setMonsterType(MonsterType.Attack);
+        Monster attackMonster = new Monster();
+        attackMonster.setName("TestAttackMonster");
+        attackMonster.setTeam(1);
+        attackMonster.setMonsterType(MonsterType.Attack);
 
         Stats stats = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
-        monster.setStats(stats);
+        attackMonster.setStats(stats);
 
-        monster.gainExperience(1000);
+        attackMonster.gainExperience(1000);
 
         //just for now
-        monster.setCurrentHp(monster.getMaxHp());
+        attackMonster.setCurrentHp(attackMonster.getMaxHp());
 
         Trigger trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
         Effect effect = new AttackEffect(1.0);
@@ -41,31 +44,30 @@ public class MonsterFactory {
 
         Action autoAttack = new Action(skill, trigger, 0);
 
-        monster.addAction(autoAttack, 0);
+        attackMonster.addAction(autoAttack, 0);
 
-        System.out.println(monster.getStatsAsString());
+        System.out.println(attackMonster.getStatsAsString());
 
-        monster = new Monster();
-        monster.setName("TestSupportMonster");
-        monster.setTeam(1);
-        monster.setMonsterType(MonsterType.Support);
+        Monster supportMonster = new Monster();
+        supportMonster.setName("TestSupportMonster");
+        supportMonster.setTeam(1);
+        supportMonster.setMonsterType(MonsterType.Support);
 
-        stats = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
-        monster.setStats(stats);
+        Stats stats1 = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
+        supportMonster.setStats(stats1);
 
-        monster.gainExperience(1000);
+        supportMonster.gainExperience(1000);
 
         //Just for now
-        monster.setCurrentHp(monster.getMaxHp());
+        supportMonster.setCurrentHp(supportMonster.getMaxHp());
 
-        trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
-        effect = new AttackEffect(1.0);
+        Trigger trigger1 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
+        Effect effect1 = new AttackEffect(1.0);
 
-        skill = new Skill("Auto Attack");
-        skill.addEffect(effect);
+        Skill skill1 = new Skill("Auto Attack");
+        skill1.addEffect(effect1);
 
-        autoAttack = new Action(skill, trigger, 0);
-
+        Action autoAttack1 = new Action(skill1, trigger1, 0);
 
         Effect buffEffect = new StatChange(2);
         Trigger buffTrigger = new StatChangeTrigger(TargetType.Team, (StatChange) buffEffect);
@@ -73,31 +75,31 @@ public class MonsterFactory {
         Skill atkBuff = new Skill("Attack Buff");
         atkBuff.addEffect(buffEffect);
 
-        monster.addAction(new Action(atkBuff, buffTrigger, 2), 0);
-        monster.addAction(autoAttack, 1);
+        supportMonster.addAction(new Action(atkBuff, buffTrigger, 2), 0);
+        supportMonster.addAction(autoAttack1, 1);
 
-        System.out.println(monster.getStatsAsString());
+        System.out.println(supportMonster.getStatsAsString());
 
-        monster = new Monster();
-        monster.setName("TestTankMonster");
-        monster.setTeam(1);
-        monster.setMonsterType(MonsterType.Tank);
+        Monster tankMonster = new Monster();
+        tankMonster.setName("TestTankMonster");
+        tankMonster.setTeam(1);
+        tankMonster.setMonsterType(MonsterType.Tank);
 
-        stats = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
-        monster.setStats(stats);
+        Stats stats2 = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
+        tankMonster.setStats(stats2);
 
-        monster.gainExperience(1000);
+        tankMonster.gainExperience(1000);
 
         //Just for now
-        monster.setCurrentHp(monster.getMaxHp());
+        tankMonster.setCurrentHp(tankMonster.getMaxHp());
 
-        trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
-        effect = new AttackEffect(1.0);
+        Trigger trigger2 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
+        Effect effect2 = new AttackEffect(1.0);
 
-        skill = new Skill("Auto Attack");
-        skill.addEffect(effect);
+        Skill skill2 = new Skill("Auto Attack");
+        skill2.addEffect(effect2);
 
-        autoAttack = new Action(skill, trigger, 0);
+        Action autoAttack3 = new Action(skill2, trigger2, 0);
 
         Trigger healTrigger = new StatTrigger(TargetType.Self, 0, 70, 0, 100, 0, 100);
         Effect healEffect = new HealEffect(20);
@@ -107,12 +109,20 @@ public class MonsterFactory {
 
         Action heal = new Action(healSkill, healTrigger, 2);
 
-        monster.addAction(heal, 0);
+        tankMonster.addAction(heal, 0);
 
-        monster.addAction(autoAttack, 1);
+        tankMonster.addAction(autoAttack3, 1);
 
-        System.out.println(monster.getStatsAsString());
+        System.out.println(tankMonster.getStatsAsString());
 
-        return monster;
+        test(attackMonster, supportMonster, tankMonster);
+        return attackMonster;
+    }
+
+    public void test(Monster attackMonster, Monster supportMonster, Monster tankMonster){
+        AttackEffect attackEffect = new AttackEffect(1.0);
+        for(int i = 0; i < 3; i++) {
+            System.out.println("Attacker vs. Tank damage " + i + ": " +attackEffect.calculateDamage(attackMonster, tankMonster));
+        }
     }
 }
