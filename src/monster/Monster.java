@@ -156,9 +156,7 @@ public class Monster {
     public Action chooseAction(List monsters) {
         for(int i = 0; i < _actions.size(); i++){
             if(_actions.get(i).isTriggered(this, monsters)){
-                if(_actions.get(i).getCooldown() == 0) {
                     return _actions.get(i);
-                }
             }
         }
         return _actions.get(_actions.size()-1);
