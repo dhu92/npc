@@ -197,7 +197,7 @@ public class Monster {
     }
 
     public double getMaxHp() {
-        return _stats.getCurrentHP();
+        return _stats.getMaxHP();
     }
 
     public double getDefense() {
