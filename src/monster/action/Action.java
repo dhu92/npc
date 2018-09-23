@@ -28,7 +28,6 @@ public class Action {
         //return true;
     }
 
-
     public void execute(Monster currentActive, List<Monster> monsters){
         _skill.execute(currentActive, monsters);
     }

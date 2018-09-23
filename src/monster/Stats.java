@@ -5,24 +5,41 @@ public class Stats {
     private int _maxHP;
     private int _currentHP;
     private int _attack;
+    private int _critRate;
+    private int _critDamage;
     private int _defense;
+    private int _speed;
+    private int _accuracy;
+    private int _resistance;
 
     public Stats(){
 
     }
 
-    public Stats(int hp, int attack, int defense){
-        _maxHP = hp;
-        _attack = attack;
-        _currentHP = _maxHP;
-        _defense = defense;
-    }
+//    public Stats(int hp, int attack, int defense){
+//        _maxHP = hp;
+//        _attack = attack;
+//        _currentHP = _maxHP;
+//        _defense = defense;
+//    }
 
-    public Stats(int maxHP, int currentHP, int attack, int defense){
+//    public Stats(int maxHP, int currentHP, int attack, int defense){
+//        _maxHP = maxHP;
+//        _currentHP = currentHP;
+//        _attack = attack;
+//        _defense = defense;
+//    }
+
+    public Stats(int maxHP, int currentHP, int attack, int critRate, int critDamage, int defense, int speed, int accuracy, int resistance) {
         _maxHP = maxHP;
         _currentHP = currentHP;
         _attack = attack;
         _defense = defense;
+        _critRate = critRate;
+        _critDamage = critDamage;
+        _speed = speed;
+        _accuracy = accuracy;
+        _resistance = resistance;
     }
 
     public void setMaxHP(int hp){
@@ -53,7 +70,47 @@ public class Stats {
 
     public void setDefense(int defense){_defense = defense;}
 
+    public void setCritRate(int critRate){
+        _critRate = critRate;
+    }
+
+    public int getCritRate(){
+        return _critRate;
+    }
+
+    public void setCritDamage(int critDamage){
+        _critDamage = critDamage;
+    }
+
+    public int getCritDamage(){
+        return _critDamage;
+    }
+
+    public void setSpeed(int speed){
+        _speed = speed;
+    }
+
+    public int getSpeed(){
+        return _speed;
+    }
+
+    public void setAccuracy(int accuracy){
+        _accuracy = accuracy;
+    }
+
+    public int getAccuracy(){
+        return _accuracy;
+    }
+
+    public void setResistance(int resistance){
+        _resistance = resistance;
+    }
+
+    public int getResistance(){
+        return _resistance;
+    }
     public Stats copy(){
-        return new Stats(_maxHP, _currentHP, _attack, _defense);
+        Stats copy = new Stats();
+        return new Stats(_maxHP, _currentHP, _attack, _critRate, _critDamage, _defense, _speed, _accuracy, _resistance);
     }
 }

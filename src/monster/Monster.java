@@ -17,15 +17,21 @@ public class Monster {
 //    private int _attack;
 //    private int _currentHp;
 
-    public Monster(int team, int hp, int attack, int defense, List<Action> actions){
-        _actions = actions;
-        _alive = true;
-        _team = team;
-        _stats = new Stats(hp, attack, defense);
-        _statChanges = new ArrayList<>();
+//    public Monster(int team, int hp, int attack, int defense, List<Action> actions){
+//        _actions = actions;
+//        _alive = true;
+//        _team = team;
+//        _stats = new Stats(hp, attack, defense);
+//        _statChanges = new ArrayList<>();
 //        _maxHp = hp;
 //        _attack = attack;
 //        _currentHp = _maxHp;
+//    }
+
+    public Monster(){
+       _actions = new ArrayList<>();
+       _statChanges = new ArrayList<>();
+       _alive = true;
     }
 
     public void addAction(Action action, int priority){
@@ -115,6 +121,26 @@ public class Monster {
 
     public int getDefense() {
         return _stats.getDefense();
+    }
+
+    public int getSpeed() {
+        return _stats.getSpeed();
+    }
+
+    public int getAccuracy(){
+        return _stats.getAccuracy();
+    }
+
+    public int getResistance(){
+        return _stats.getResistance();
+    }
+
+    public int getCritRate(){
+        return _stats.getCritRate();
+    }
+
+    public int getCritDamage(){
+        return _stats.getCritDamage();
     }
 
     public List<StatChange> getStatChanges(){

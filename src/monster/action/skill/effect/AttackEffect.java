@@ -4,6 +4,7 @@ import monster.Monster;
 import monster.Stats;
 
 import java.util.List;
+import java.util.Random;
 
 public class AttackEffect extends Effect {
 
@@ -36,12 +37,16 @@ public class AttackEffect extends Effect {
         Stats attackerStats = attacker.getChangedStats();
         Stats defenderStats = defender.getChangedStats();
 
-        //No def stat or something like that right now, so just return attack stat of attacker
+        //TODO: apply crit rate + crit damage
         // formula from the internet:
         // realDamage = SkillDmg * BaseDamage * BaseDamage / (BaseDamage + Defense)
-
-        return (int) (_multiplier * attackerStats.getAttack() * (attackerStats.getAttack() / (attackerStats.getAttack() * defenderStats.getDefense())));
-
+        Random rand = new Random();
+        int rng = rand.nextInt(100)+1;
+        int dmg = attackerStats.getAttack();
+        if(rng <= attackerStats.getCritRate()){
+            dmg *= attackerStats.getCritDamage();
+        }
+        return (int) (_multiplier * dmg * (dmg / (dmg * defenderStats.getDefense())));
     }
 
 }
