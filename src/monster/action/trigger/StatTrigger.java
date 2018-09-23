@@ -1,17 +1,27 @@
-package monster.action;
+package monster.action.trigger;
 
 import monster.Monster;
 
 public class StatTrigger extends Trigger{
 
-    //TODO: add remaining stats
     private double _lowPercentageHP;
     private double _highPercentageHP;
     private double _lowPercentageAttack;
     private double _highPercentageAttack;
     private double _lowPercentageDefense;
     private double _highPercentageDefense;
+    private double _lowPercantageCritRate;
+    private double _highPercentageCritRate;
+    private double _lowPercentageCritDamage;
+    private double _highPercentageCritDamage;
+    private double _lowPercentageSpeed;
+    private double _highPercentageSpeed;
+    private double _lowPercentageAccuracy;
+    private double _highPercentageAccurancy;
+    private double _lowPercentageResistance;
+    private double _highPercentageResistance;
 
+    //TODO: add remaining stats
     public StatTrigger(TargetType target, double lowHP, double highHP, double lowAttack, double highAttack, double lowDefense, double highDefense){
         super(target);
         _lowPercentageAttack = lowAttack;
@@ -20,6 +30,7 @@ public class StatTrigger extends Trigger{
         _highPercentageHP = highHP;
         _lowPercentageDefense = lowDefense;
         _highPercentageDefense = highDefense;
+
     }
 
 

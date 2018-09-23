@@ -8,10 +8,11 @@ import java.util.List;
 
 public class Monster {
 
+    private String _name;
     private int _team;
-    private List<Action> _actions;
     private boolean _alive;
     private Stats _stats;
+    private List<Action> _actions;
     private List<StatChange> _statChanges;
 //    private int _maxHp;
 //    private int _attack;
@@ -56,6 +57,14 @@ public class Monster {
             }
         }
         _statChanges.removeAll(remove);
+    }
+
+    public void setStats(Stats stats){
+        _stats = stats;
+    }
+
+    public void setTeam(int team){
+        _team = team;
     }
 //    public void getHit(int dmg){
 //        _stats.setCurrentHP(_stats.getCurrentHP() - dmg);
@@ -102,6 +111,10 @@ public class Monster {
     public String getStatsAsString(){
         return "HP: " + _stats.getCurrentHP() + "/" + _stats.getMaxHP() + " | Attack: " + _stats.getAttack() + " | Defense: " + _stats.getDefense();
     }
+
+    public String getName(){return _name;}
+
+    public void setName(String name){_name = name; }
 
     public int getTeam() {
         return _team;

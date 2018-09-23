@@ -2,6 +2,7 @@ package monster.action;
 
 import monster.Monster;
 import monster.action.skill.Skill;
+import monster.action.trigger.Trigger;
 
 import java.util.List;
 

@@ -44,7 +44,7 @@ public class AttackEffect extends Effect {
         int rng = rand.nextInt(100)+1;
         int dmg = attackerStats.getAttack();
         if(rng <= attackerStats.getCritRate()){
-            dmg *= attackerStats.getCritDamage();
+            dmg += attackerStats.getAttack() * (double)(attackerStats.getCritDamage()/100.0);
         }
         return (int) (_multiplier * dmg * (dmg / (dmg * defenderStats.getDefense())));
     }

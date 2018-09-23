@@ -23,15 +23,15 @@ public class Skill {
         }
     }
 
-    private void setName(String name){
+    public void setName(String name){
         _name = name;
     }
 
-    private void addEffect(Effect effect){
+    public void addEffect(Effect effect){
         _skillEffects.add(effect);
     }
 
-    private void removeEffect(Effect effect){
+    public void removeEffect(Effect effect){
         _skillEffects.remove(effect);
     }
 

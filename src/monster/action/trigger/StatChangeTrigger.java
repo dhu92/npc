@@ -1,4 +1,4 @@
-package monster.action;
+package monster.action.trigger;
 
 import monster.Monster;
 import monster.action.skill.effect.StatChange;
