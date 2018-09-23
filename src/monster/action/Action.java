@@ -35,7 +35,8 @@ public class Action {
 
     public void execute(Monster currentActive, List<Monster> monsters){
         _skill.execute(currentActive, monsters, _trigger);
-        _currentCooldown = _cooldown;
+        //TODO: remove +1
+        _currentCooldown = _cooldown + 1;
     }
 
     public int getCooldown(){
