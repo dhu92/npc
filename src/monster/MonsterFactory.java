@@ -19,6 +19,8 @@ public class MonsterFactory {
         Stats stats = new Stats(1000, 1000, 100, 40, 120, 300, 100, 60, 30);
         monster.setStats(stats);
 
+        monster.gainExperience(1000);
+
         Trigger trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
         Effect effect = new AttackEffect(1.0);
 

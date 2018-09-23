@@ -35,11 +35,23 @@ public class Stats {
         _currentHP = currentHP;
         _attack = attack;
         _defense = defense;
-        _critRate = critRate;
+        if(critRate > 100){
+            _critRate = 100;
+        } else {
+            _critRate = critRate;
+        }
         _critDamage = critDamage;
         _speed = speed;
-        _accuracy = accuracy;
-        _resistance = resistance;
+        if(accuracy > 100) {
+            _accuracy = 100;
+        } else {
+            _accuracy = accuracy;
+        }
+        if(resistance > 100){
+            _resistance = 100;
+        } else {
+            _resistance = resistance;
+        }
     }
 
     public void setMaxHP(int hp){
@@ -71,7 +83,11 @@ public class Stats {
     public void setDefense(int defense){_defense = defense;}
 
     public void setCritRate(int critRate){
-        _critRate = critRate;
+        if(critRate > 100){
+            _critRate = 100;
+        } else {
+            _critRate = critRate;
+        }
     }
 
     public int getCritRate(){
@@ -79,6 +95,7 @@ public class Stats {
     }
 
     public void setCritDamage(int critDamage){
+
         _critDamage = critDamage;
     }
 
@@ -95,7 +112,11 @@ public class Stats {
     }
 
     public void setAccuracy(int accuracy){
-        _accuracy = accuracy;
+        if(accuracy > 100){
+            _accuracy = 100;
+        } else {
+            _accuracy = accuracy;
+        }
     }
 
     public int getAccuracy(){
@@ -103,7 +124,11 @@ public class Stats {
     }
 
     public void setResistance(int resistance){
-        _resistance = resistance;
+        if(resistance > 100) {
+            _resistance = 100;
+        } else {
+            _resistance = resistance;
+        }
     }
 
     public int getResistance(){

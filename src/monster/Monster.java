@@ -14,6 +14,9 @@ public class Monster {
     private Stats _stats;
     private List<Action> _actions;
     private List<StatChange> _statChanges;
+    private MonsterType _type;
+    private int _experience;
+
 //    private int _maxHp;
 //    private int _attack;
 //    private int _currentHp;
@@ -57,6 +60,60 @@ public class Monster {
             }
         }
         _statChanges.removeAll(remove);
+    }
+
+    public void gainExperience(int experience){
+        int currentLevel = calculateMonsterLevel();
+        _experience += experience;
+        int newLevel = calculateMonsterLevel();
+        int levelUps = newLevel - currentLevel;
+        for(int i = 0; i < levelUps; i++){
+            levelUp();
+        }
+    }
+
+    private void levelUp(){
+        _stats.setMaxHP((int) (_stats.getMaxHP() * _type.getHpLevelGrowth()));
+        _stats.setAttack((int) (_stats.getAttack() * _type.getAttackLevelGrowth()));
+        _stats.setDefense((int) (_stats.getDefense() * _type.getDefenseLevelGrowth()));
+        _stats.setCritRate((int) (_stats.getCritRate() * _type.getCritRateLevelGrowth()));
+        _stats.setCritDamage((int) (_stats.getCritDamage() * _type.getCritDamageLevelGrowth()));
+        _stats.setSpeed((int) (_stats.getSpeed() * _type.getSpeedLevelGrowth()));
+        _stats.setAccuracy((int) (_stats.getAccuracy() * _type.getAccuracyLevelGrowth()));
+        _stats.setResistance((int) (_stats.getResistance() * _type.getResistanceLevelGrowth()));
+    }
+
+    public int getMonsterLevel(){
+        return calculateMonsterLevel();
+    }
+
+    private int calculateMonsterLevel(){
+        //TODO: experience need for each level
+        int xp = _experience;
+        int neededXP = 100;
+        double growth = 1.2;
+        int level = 1;
+        while(xp - neededXP > 0){
+            level ++;
+            neededXP = (int)(neededXP * growth);
+        }
+        return level;
+    }
+
+    public void setExperience(int experience) {
+        _experience = experience;
+    }
+
+    public int getExperience(){
+        return _experience;
+    }
+
+    public void setMonsterType(MonsterType type){
+        _type = type;
+    }
+
+    public MonsterType getMonsterType(){
+        return _type;
     }
 
     public void setStats(Stats stats){
