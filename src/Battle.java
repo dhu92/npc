@@ -25,6 +25,10 @@ public class Battle {
         int turn = 0;
         boolean winner = false;
         Action action;
+        System.out.println("======================FIGHT START======================");
+        for(Monster m : _monsters){
+            System.out.println(m.getStatsAsString());
+        }
         Monster activeMonster = _monsters.get(turn%2);
         while(!winner && turn < _maxTurns){
             activeMonster = _monsters.get(turn%2);
@@ -60,21 +64,21 @@ public class Battle {
         List<Monster> allTypes = factory.createTestMonster();
 
         //Test 1:
+        resetMonster(allTypes);
         Battle attackervssupport = new Battle(allTypes.get(0), allTypes.get(1));
         attackervssupport.fight();
-        //too many changes, tests not working atm
-//        List<Action> m1Actions = new LinkedList<>();
-//        m1Actions.add(0, new Action(new Attack()));
-//        m1Actions.add(1, new Action(new Heal()));
-//        Monster m1 = new Monster(1, 100, 100, m1Actions);
-//
-//        List<Action> m2Actions = new LinkedList<>();
-//        m2Actions.add(0, new Action(new Heal()));
-//        m2Actions.add(1, new Action(new Attack()));
-//        Monster m2 = new Monster(2, 150, 50, m2Actions);
-//
-//        Battle battle = new Battle(m1, m2);
-//        battle.fight();
+
+        //Test2
+        resetMonster(allTypes);
+        Battle attackervstank = new Battle(allTypes.get(0), allTypes.get(2));
+        attackervstank.fight();
+
+    }
+
+    public static void resetMonster(List<Monster> monsters){
+        for(Monster m : monsters){
+            m.setCurrentHp(m.getMaxHp());
+        }
     }
 
 }

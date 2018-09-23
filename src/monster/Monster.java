@@ -73,14 +73,14 @@ public class Monster {
     }
 
     private void levelUp(){
-        _stats.setMaxHP((int) (_stats.getMaxHP() * _type.getHpLevelGrowth()));
-        _stats.setAttack((int) (_stats.getAttack() * _type.getAttackLevelGrowth()));
-        _stats.setDefense((int) (_stats.getDefense() * _type.getDefenseLevelGrowth()));
-        _stats.setCritRate((int) (_stats.getCritRate() * _type.getCritRateLevelGrowth()));
-        _stats.setCritDamage((int) (_stats.getCritDamage() * _type.getCritDamageLevelGrowth()));
-        _stats.setSpeed((int) (_stats.getSpeed() * _type.getSpeedLevelGrowth()));
-        _stats.setAccuracy((int) (_stats.getAccuracy() * _type.getAccuracyLevelGrowth()));
-        _stats.setResistance((int) (_stats.getResistance() * _type.getResistanceLevelGrowth()));
+        _stats.setMaxHP( _stats.getMaxHP() * _type.getHpLevelGrowth());
+        _stats.setAttack( _stats.getAttack() * _type.getAttackLevelGrowth());
+        _stats.setDefense(_stats.getDefense() * _type.getDefenseLevelGrowth());
+        _stats.setCritRate(_stats.getCritRate() * _type.getCritRateLevelGrowth());
+        _stats.setCritDamage(_stats.getCritDamage() * _type.getCritDamageLevelGrowth());
+        _stats.setSpeed(_stats.getSpeed() * _type.getSpeedLevelGrowth());
+        _stats.setAccuracy(_stats.getAccuracy() * _type.getAccuracyLevelGrowth());
+        _stats.setResistance(_stats.getResistance() * _type.getResistanceLevelGrowth());
     }
 
     public int getMonsterLevel(){
