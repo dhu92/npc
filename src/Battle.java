@@ -25,25 +25,27 @@ public class Battle {
         int turn = 0;
         boolean winner = false;
         Action action;
+        Monster activeMonster = _monsters.get(turn%2);
         while(!winner && turn < _maxTurns){
-            action = _monsters.get(turn%2).chooseAction(_monsters);
-            action.execute(_monsters.get(turn%2), _monsters);
-            System.out.print("Monster " + ((turn%2)+1) + " used ");
+            activeMonster = _monsters.get(turn%2);
+            action = activeMonster.chooseAction(_monsters);
+            action.execute(activeMonster, _monsters);
+            System.out.print(activeMonster.getName() + " used ");
             action.printAction();
             for(Monster monster : _monsters){
                 if(!monster.isAlive()){
                     winner = true;
                 }
             }
-            _monsters.get(turn%2).reduceStatChanges();
-            _monsters.get(turn%2).reduceAllCooldowns();
+            activeMonster.reduceStatChanges();
+            activeMonster.reduceAllCooldowns();
             turn++;
             for(Monster monster : _monsters){
                 System.out.println(monster.getStatsAsString());
             }
         }
         if(turn < _maxTurns) {
-            System.out.println("monster.Monster " + ((turn % 2) + 1) + " won the battle!");
+            System.out.println(activeMonster.getName() + " won the battle!");
         } else {
             System.out.println("Draw!");
         }

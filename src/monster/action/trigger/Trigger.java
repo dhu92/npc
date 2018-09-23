@@ -84,6 +84,7 @@ public abstract class Trigger {
                         filtered.add(m);
                     }
                 }
+                possibleTargets.addAll(filtered);
                 break;
 
         }
