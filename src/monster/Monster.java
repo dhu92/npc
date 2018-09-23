@@ -210,6 +210,10 @@ public class Monster {
         _statChanges.add(change);
     }
 
+    public void removeAllStatChanges(){
+        _statChanges = new ArrayList<>();
+    }
+
     public Stats getChangedStats() {
         Stats changedStats = _stats.copy();
         for(StatChange change : _statChanges){

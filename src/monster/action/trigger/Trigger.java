@@ -61,7 +61,9 @@ public abstract class Trigger {
             case AllAllied:
                 for(Monster m : targets){
                     if(m.getTeam() == currentActive.getTeam()){
-                        filtered.add(m);
+                        if(!filtered.contains(m)) {
+                            filtered.add(m);
+                        }
                     }
                 }
                 possibleTargets.addAll(filtered);

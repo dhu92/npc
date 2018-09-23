@@ -83,6 +83,7 @@ public class Battle {
     public static void resetMonster(List<Monster> monsters){
         for(Monster m : monsters){
             m.setAlive(true);
+            m.removeAllStatChanges();
             m.setCurrentHp(m.getMaxHp());
         }
     }
