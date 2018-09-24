@@ -42,8 +42,8 @@ public class HealEffect extends Effect{
     }
 
 
-    private int calculateHealingValue(Monster healer, Monster target){
+    private double calculateHealingValue(Monster healer, Monster target){
         //idk right now
-        return (int) (target.getMaxHp()*(double)(_healPercentage/100.0));
+        return target.getMaxHp()*(_healPercentage/100.0);
     }
 }

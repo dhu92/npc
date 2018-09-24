@@ -40,24 +40,9 @@ public abstract class Trigger {
                 possibleTargets.add(currentActive);
                 possibleTargets.addAll(targets);
                 break;
-            //for now, last one to match
-            //TODO: change selection
             case SingleAlly:
-//                Monster matchingMonster = new Monster();
-//                for(Monster m : targets){
-//                    if(m.getTeam() == currentActive.getTeam()){
-//                        if(matchesTriggerConditions(m)){
-//                            matchingMonster = m;
-//                        }
-//                    }
-//                }
-//                possibleTargets.add(matchingMonster);
-//                break;
             case Team:
                 possibleTargets.add(currentActive);
-//                possibleTargets.addAll(filterTargetsByTeam(currentActive.getTeam(), targets));
-//                break;
-//                Fall through just for fun
             case AllAllied:
                 for(Monster m : targets){
                     if(m.getTeam() == currentActive.getTeam()){
@@ -69,17 +54,6 @@ public abstract class Trigger {
                 possibleTargets.addAll(filtered);
                 break;
             case SingleEnemy:
-//                Monster monster = new Monster();
-//                for(Monster m : targets){
-//                    if(m.getTeam() == currentActive.getTeam()){
-//                        if(matchesTriggerConditions(m)){
-//                            monster = m;
-//                        }
-//                    }
-//                }
-//                possibleTargets.add(monster);
-//                break;
-
             case EnemyTeam:
                 for(Monster m : targets){
                     if(m.getTeam() != currentActive.getTeam()){
@@ -97,15 +71,13 @@ public abstract class Trigger {
         return _targetType;
     }
 
-    public void setTriggerTarget(TargetType targetType){
-        _targetType = targetType;
-    }
-
     public List<Monster> filterTargetsByTeam(int team, List<Monster> monsters){
         List<Monster> filtered = new ArrayList<>();
         for(Monster m : monsters){
             if(m.getTeam() == team){
-                filtered.add(m);
+                if(!filtered.contains(m)) {
+                    filtered.add(m);
+                }
             }
         }
         return filtered;

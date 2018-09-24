@@ -23,10 +23,6 @@ public class Skill {
         }
     }
 
-    public void setName(String name){
-        _name = name;
-    }
-
     public void addEffect(Effect effect){
         _skillEffects.add(effect);
     }

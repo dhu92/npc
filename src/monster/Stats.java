@@ -16,20 +16,6 @@ public class Stats {
 
     }
 
-//    public Stats(int hp, int attack, int defense){
-//        _maxHP = hp;
-//        _attack = attack;
-//        _currentHP = _maxHP;
-//        _defense = defense;
-//    }
-
-//    public Stats(int maxHP, int currentHP, int attack, int defense){
-//        _maxHP = maxHP;
-//        _currentHP = currentHP;
-//        _attack = attack;
-//        _defense = defense;
-//    }
-
     public Stats(double maxHP, double currentHP, double attack, double critRate, double critDamage, double defense, double speed, double accuracy, double resistance) {
         _maxHP = maxHP;
         _currentHP = currentHP;

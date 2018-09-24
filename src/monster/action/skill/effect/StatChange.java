@@ -23,17 +23,8 @@ public class StatChange extends Effect{
 
     public StatChange(int duration){
 //        super(EffectType.StatChange);
-
         //default attack buff for testing
         this(duration, 1.0, 1.0, 1.5, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-//        _duration= duration;
-//        _name = name;
-//        _turnCount = 0;
-
-//        _defenseMultiplier = 1.0;
-//        _maxHPMultiplier = 1.0;
-//        _currentHPMultiplier = 1.0;
-//        _attackMultiplier = 1.5;
     }
 
     public StatChange(int duration, double maxHPMultiplier, double currentHPMultiplier, double attackMultiplier, double defenseMultiplier, double critRateMultiplier, double critDamageMultiplier, double accuracyMultiplier, double resistanceMultiplier, double speedMultiplier){

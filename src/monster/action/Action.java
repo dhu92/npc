@@ -30,7 +30,6 @@ public class Action {
 
     public boolean isTriggered(Monster currentActive, List<Monster> monsters){
         return _trigger.isTriggered(currentActive, monsters, _currentCooldown);
-        //return true;
     }
 
     public void execute(Monster currentActive, List<Monster> monsters){
