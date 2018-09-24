@@ -22,10 +22,11 @@ public class AttackEffect extends Effect {
 
     @Override
     public void apply(Monster activeMonster, Monster target) {
-        target.setCurrentHp((int) (target.getCurrentHp() - calculateDamage(activeMonster, target)));
-        if (target.getCurrentHp() <= 0) {
-            target.die();
-        }
+        target.onHit(calculateDamage(activeMonster, target));
+//        target.setCurrentHp((int) (target.getCurrentHp() - calculateDamage(activeMonster, target)));
+//        if (target.getCurrentHp() <= 0) {
+//            target.die();
+//        }
     }
 
     //For now, highest damage is best match

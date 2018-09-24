@@ -18,13 +18,14 @@ public class HealEffect extends Effect{
         /*
         * Just testing
         */
-        int healValue = 0;
-        healValue = calculateHealingValue(activeMonster, target);
-        if (target.getCurrentHp() + healValue > target.getMaxHp()) {
-            target.setCurrentHp(target.getMaxHp());
-        } else {
-            target.setCurrentHp(target.getCurrentHp() + healValue);
-        }
+        target.onHeal(calculateHealingValue(activeMonster, target));
+//        int healValue = 0;
+//        healValue = calculateHealingValue(activeMonster, target);
+//        if (target.getCurrentHp() + healValue > target.getMaxHp()) {
+//            target.setCurrentHp(target.getMaxHp());
+//        } else {
+//            target.setCurrentHp(target.getCurrentHp() + healValue);
+//        }
     }
 
     @Override

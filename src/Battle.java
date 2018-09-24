@@ -68,15 +68,15 @@ public class Battle {
         Battle attackervssupport = new Battle(allTypes.get(0), allTypes.get(1));
         attackervssupport.fight();
 
-        //Test2
+//        Test2
         resetMonster(allTypes);
         Battle attackervstank = new Battle(allTypes.get(0), allTypes.get(2));
         attackervstank.fight();
 
         //Test3
-        resetMonster(allTypes);
-        Battle supportvstank = new Battle(allTypes.get(1), allTypes.get(2));
-        supportvstank.fight();
+//        resetMonster(allTypes);
+//        Battle supportvstank = new Battle(allTypes.get(1), allTypes.get(2));
+//        supportvstank.fight();
 
     }
 

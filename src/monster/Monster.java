@@ -81,9 +81,29 @@ public class Monster {
         int level = 1;
         while(xp - neededXP > 0){
             level ++;
+            xp -= neededXP;
             neededXP = (int)(neededXP * growth);
         }
         return level;
+    }
+
+    public void onHit(double damage){
+        _stats.setCurrentHP(_stats.getCurrentHP() - damage);
+        if(_stats.getCurrentHP() <= 0){
+            die();
+        }
+    }
+
+    public void onHeal(double healValue){
+        if (_stats.getCurrentHP() + healValue > _stats.getMaxHP()) {
+            _stats.setCurrentHP(_stats.getMaxHP());
+        } else {
+            _stats.setCurrentHP(_stats.getCurrentHP() + healValue);
+        }
+    }
+
+    public void onDeath(){
+
     }
 
     public void setExperience(int experience) {
@@ -120,6 +140,7 @@ public class Monster {
 
     public void die(){
         _alive = false;
+        onDeath();
     }
 
     public void setAlive(boolean alive){
