@@ -22,8 +22,9 @@ public class StatTrigger extends Trigger{
     private double _lowPercentageResistance;
     private double _highPercentageResistance;
 
-    //TODO: add remaining stats
-    public StatTrigger(TargetType target, double lowHP, double highHP, double lowAttack, double highAttack, double lowDefense, double highDefense){
+    public StatTrigger(TargetType target, double lowHP, double highHP, double lowAttack, double highAttack, double lowDefense, double highDefense, double lowPercentageCritRate, double highPercentageCritRate,
+                       double lowPercentageCritDamage, double highPercentageCritDamage, double lowPercentageSpeed, double highPercentageSpeed, double lowPercentageAccuracy, double highPercentageAccuracy,
+                       double lowPercentageResistance, double highPercentageReistance){
         super(target);
         _lowPercentageAttack = lowAttack;
         _highPercentageAttack = highAttack;
@@ -31,10 +32,19 @@ public class StatTrigger extends Trigger{
         _highPercentageHP = highHP;
         _lowPercentageDefense = lowDefense;
         _highPercentageDefense = highDefense;
-
+        _lowPercantageCritRate = lowPercentageCritRate;
+        _highPercentageCritRate = highPercentageCritRate;
+        _lowPercentageCritDamage = lowPercentageCritDamage;
+        _highPercentageCritDamage = highPercentageCritDamage;
+        _lowPercentageSpeed = lowPercentageSpeed;
+        _highPercentageSpeed = highPercentageSpeed;
+        _lowPercentageAccuracy = lowPercentageAccuracy;
+        _highPercentageAccurancy = highPercentageAccuracy;
+        _lowPercentageResistance = lowPercentageResistance;
+        _highPercentageResistance = highPercentageReistance;
     }
 
-
+    //TODO: add remaining stats
     @Override
     public boolean matchesTriggerConditions(Monster monster) {
         //for now just 1 stat trigger

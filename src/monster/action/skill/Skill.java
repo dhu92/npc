@@ -10,6 +10,7 @@ import java.util.List;
 public class Skill {
 
     private String _name;
+    private String _description;
     private List<Effect> _skillEffects;
 
     public Skill(String name){
@@ -33,5 +34,8 @@ public class Skill {
 
     public String getName(){
         return _name;
+    }
+    public String getDescription(){
+        return _description;
     }
 }

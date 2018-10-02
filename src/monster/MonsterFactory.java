@@ -36,7 +36,7 @@ public class MonsterFactory {
         //just for now
         attackMonster.setCurrentHp(attackMonster.getMaxHp());
 
-        Trigger trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
+        Trigger trigger = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100);
         Effect effect = new AttackEffect(1.0);
 
         Skill skill = new Skill("Auto Attack");
@@ -61,7 +61,7 @@ public class MonsterFactory {
         //Just for now
         supportMonster.setCurrentHp(supportMonster.getMaxHp());
 
-        Trigger trigger1 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
+        Trigger trigger1 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100,0,100,0,100,0,100,0,100,0,100);
         Effect effect1 = new AttackEffect(1.0);
 
         Skill skill1 = new Skill("Auto Attack");
@@ -93,7 +93,7 @@ public class MonsterFactory {
         //Just for now
         tankMonster.setCurrentHp(tankMonster.getMaxHp());
 
-        Trigger trigger2 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 100);
+        Trigger trigger2 = new StatTrigger(TargetType.EnemyTeam, 0, 100, 0, 100, 0, 1000,0,100,0,100,0,100,0,100,0,100);
         Effect effect2 = new AttackEffect(1.0);
 
         Skill skill2 = new Skill("Auto Attack");
@@ -101,7 +101,7 @@ public class MonsterFactory {
 
         Action autoAttack3 = new Action(skill2, trigger2, 0);
 
-        Trigger healTrigger = new StatTrigger(TargetType.Self, 0, 70, 0, 100, 0, 100);
+        Trigger healTrigger = new StatTrigger(TargetType.Self, 0, 70, 0, 100, 0, 100, 0,100,0,100,0,100,0,100,0,100);
         Effect healEffect = new HealEffect(20);
 
         Skill healSkill = new Skill("SelfHeal");
